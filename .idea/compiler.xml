@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springBootDubbo_02" />
+        <module name="springBootDubbo_03" />
+        <module name="springBootDubbo_01" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springBoot_one" target="1.5" />
+      <module name="springBootDubbo_01" target="1.5" />
+      <module name="springBootDubbo_02" target="1.8" />
+      <module name="springBootDubbo_03" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springBootDubbo_02" options="-parameters" />
+      <module name="springBootDubbo_03" options="-parameters" />
+    </option>
+  </component>
+</project>

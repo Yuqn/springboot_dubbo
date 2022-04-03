@@ -1,0 +1,54 @@
+服务提供者
+一、创建springboot项目（不需要起步依赖）
+二、添加依赖
+    添加接口层项目依赖、添加dubbo依赖、添加zookeeper依赖
+    依赖如下:
+    <!--添加接口依赖-->
+            <dependency>
+                <groupId>com.yuqn</groupId>
+                <artifactId>springBootDubbo_01</artifactId>
+                <version>1.0</version>
+            </dependency>
+    <!--添加dubbo依赖-->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>2.7.8</version>
+            </dependency>
+    <!--添加zookeeper依赖-->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-zookeeper</artifactId>
+                <version>2.7.8</version>
+                <type>pom</type>
+                <!--排除日志重复加载依赖-->
+                <exclusions>
+                     <exclusion>
+                          <artifactId>slf4j-log4j12</artifactId>
+                          <groupId>org.slf4j</groupId>
+                     </exclusion>
+                </exclusions>
+            </dependency>
+三、写业务层接口实现类
+四、添加注解
+    在接口实现类上添加注解@Component、@DubboService(interfaceClass = StudentServer.class,version = "1.0",timeout = 5000)
+        @Component：存放到容器中，可省略
+        @DubboService：注解设置暴露接口设置
+            interfaceClass：表示暴露接口
+            version：版本号
+            timeout：请求时间
+五、配置文件
+    #配置服务名称
+    spring.application.name=studentserver-provider
+
+    #配置扫描的包，扫描的@dubboservice
+    dubbo.scan.base-packages=com.yuqn.service
+
+    #配置dubbo协议，如果使用zookeeper可以不用
+    #dubbo.protocol.name=dubbo
+    #dubbo.protocol.port=20881
+
+    #设置注册中心
+    dubbo.registry.address=zookeeper://localhost:2181
+六、启动类添加注解
+    在启动类上面添加注解@EnableDubbo,启动dubbo

@@ -1,0 +1,13 @@
+服务消费之
+一、创建项目
+    起步依赖选择web
+二、添加依赖
+    依赖同服务提供者一样
+三、写controller类
+    注：@DubboReference(interfaceClass = StudentServer.class,version = "1.0")
+       private StudentServer studentServer;
+    @DubboReference使用注解获取远程接口
+四、启动类添加注解
+    在启动类上面添加注解@EnableDubbo,启动dubbo
+五、写配置文件
+
